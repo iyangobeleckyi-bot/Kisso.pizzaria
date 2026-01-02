@@ -1,0 +1,2366 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kisso – піца в Коломиї | доставка +380660209675</title>
+  <meta name="description" content="Піца, страви, десерти. Коломия, вул. Івана Миколайчука. Доставка та столики 1-30.">
+  <meta name="keywords" content="піца Коломия, доставка їжі, італійська кухня, Kisso, замовлення столика, сік Sandora">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍕</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+  --tomato: #e54b22;
+  --cheese: #f9c74f;
+  --olive: #6a994e;
+  --brown: #3d2b1f;
+  --cream: #fff8f0;
+  --radius: 18px;
+  --font: 'Inter', sans-serif;
+  --transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font); }
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--brown); overflow-x: hidden; }
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ---------- header ---------- */
+header { 
+  position: sticky; 
+  top: 0; 
+  z-index: 1000; 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  padding: .75rem 1rem; 
+  background: rgba(255,255,255,.85); 
+  backdrop-filter: blur(8px); 
+  transform: translateY(0);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s;
+}
+header.hidden {
+  transform: translateY(-100%);
+}
+header.scrolled {
+  background: rgba(255,255,255,.95);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.logo { 
+  font-size: 1.5rem; 
+  font-weight: 700; 
+  color: var(--tomato);
+  position: relative;
+  padding-left: 0.5rem;
+}
+.logo::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 70%;
+  background: var(--tomato);
+  border-radius: 2px;
+  animation: logoPulse 2s infinite;
+}
+.burger { width: 30px; height: 24px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: var(--transition); }
+.burger:hover { transform: scale(1.1); }
+.burger span { width: 100%; height: 3px; background: var(--tomato); border-radius: 3px; transition: var(--transition); }
+.burger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: rotate(-45deg) translate(7px,-6px); }
+nav { 
+  position: absolute; 
+  top: 100%; 
+  left: 0; 
+  right: 0; 
+  background: #fff; 
+  max-height: 0; 
+  overflow: hidden; 
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s 0.1s; 
+  opacity: 0; 
+  display: flex; 
+  flex-direction: column; 
+  padding: 0 1rem;
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+nav.open { max-height: 220px; opacity: 1; padding: .5rem 1rem; }
+nav a { 
+  padding: .75rem 0; 
+  font-weight: 600; 
+  position: relative;
+  transition: var(--transition);
+  transform: translateX(-10px);
+  opacity: 0;
+}
+nav.open a {
+  transform: translateX(0);
+  opacity: 1;
+}
+nav a:nth-child(1) { transition-delay: 0.1s; }
+nav a:nth-child(2) { transition-delay: 0.2s; }
+nav a:nth-child(3) { transition-delay: 0.3s; }
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0.5rem;
+  width: 0;
+  height: 2px;
+  background: var(--tomato);
+  transition: width 0.3s;
+}
+nav a:hover::after {
+  width: 30px;
+}
+
+/* ---------- hero ---------- */
+.hero { 
+  min-height: 70vh; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  text-align: center; 
+  padding: 2rem 1rem; 
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'%3E%3Crect fill='%23fff8f0' width='1200' height='600'/%3E%3Cpath fill='%23f9c74f' opacity='.15' d='M0 300L50 325L100 300L150 275L200 300L250 325L300 300L350 275L400 300L450 325L500 300L550 275L600 300L650 325L700 300L750 275L800 300L850 325L900 300L950 275L1000 300L1050 325L1100 300L1150 275L1200 300V600H0V300Z'/%3E%3C/svg%3E") center/cover no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(249,199,79,0.1) 0%, rgba(255,255,255,0) 70%);
+  animation: rotate 30s linear infinite;
+}
+.hero h1 { 
+  font-size: clamp(2rem,5vw,3.5rem); 
+  margin-bottom: .5rem; 
+  color: var(--tomato);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.hero p { 
+  font-size: 1.125rem; 
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+}
+.btn { 
+  background: var(--tomato); 
+  color: #fff; 
+  border: none; 
+  padding: .75rem 1.5rem; 
+  border-radius: 50px; 
+  font-size: 1rem; 
+  font-weight: 600; 
+  cursor: pointer; 
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
+}
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  z-index: -1;
+}
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+.btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 10px 20px rgba(229, 75, 34, 0.3); }
+.search-bar { 
+  width: 90%; 
+  max-width: 600px; 
+  margin: 1rem auto; 
+  padding: .75rem 1rem; 
+  border: 2px solid var(--cheese); 
+  border-radius: 50px; 
+  background: #fff; 
+  color: var(--brown); 
+  outline: none; 
+  font-size: 1rem;
+  transition: var(--transition);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
+}
+.search-bar:focus { 
+  border-color: var(--tomato); 
+  box-shadow: 0 0 0 3px rgba(229, 75, 34, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ---------- tabs ---------- */
+.tabs { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: .5rem; 
+  justify-content: center; 
+  padding: 1rem; 
+  position: relative;
+}
+.tabs::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: var(--tomato);
+  border-radius: 3px;
+  animation: tabLine 3s infinite alternate;
+}
+.tab { 
+  background: #fff; 
+  color: var(--brown); 
+  padding: .5rem 1rem; 
+  border-radius: 50px; 
+  cursor: pointer; 
+  font-weight: 600; 
+  transition: var(--transition); 
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+.tab::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(229, 75, 34, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s, height 0.4s;
+  z-index: 0;
+}
+.tab:hover::before {
+  width: 100px;
+  height: 100px;
+}
+.tab.active, .tab:hover { 
+  border-color: var(--tomato); 
+  background: var(--tomato); 
+  color: #fff; 
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(229, 75, 34, 0.2);
+}
+
+/* ---------- volume tabs (для напоїв) ---------- */
+.volume-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  padding: 0 1rem;
+}
+.volume-tab {
+  background: #f9f9f9;
+  color: var(--brown);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+.volume-tab.active {
+  border-color: var(--tomato);
+  background: var(--tomato);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(229, 75, 34, 0.2);
+}
+.volume-tab:hover:not(.active) {
+  border-color: var(--cheese);
+}
+
+/* ---------- menu ---------- */
+.menu-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+  gap: 1.5rem; 
+  padding: 1rem;
+}
+.card { 
+  background: #fff; 
+  border-radius: var(--radius); 
+  overflow: hidden; 
+  display: flex; 
+  flex-direction: column; 
+  transition: var(--transition); 
+  box-shadow: 0 5px 15px rgba(0,0,0,.05);
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  animation: cardAppear 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.card:hover { 
+  transform: translateY(-10px) scale(1.02); 
+  box-shadow: 0 15px 30px rgba(0,0,0,.15);
+}
+.card img { 
+  aspect-ratio: 4/3; 
+  object-fit: cover; 
+  width: 100%;
+  transition: var(--transition);
+}
+.card:hover img {
+  transform: scale(1.05);
+}
+.card-body { 
+  padding: 1rem; 
+  flex: 1; 
+  display: flex; 
+  flex-direction: column; 
+}
+.card-title { 
+  font-size: 1.125rem; 
+  margin-bottom: .25rem; 
+  display: flex; 
+  align-items: center; 
+  gap: .5rem; 
+}
+.size-badge {
+  background: var(--tomato);
+  color: white;
+  font-size: 0.8rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 10px;
+  margin-left: auto;
+}
+.vegan-badge { 
+  color: var(--olive); 
+  font-size: .9rem; 
+}
+.card-price { 
+  font-weight: 600; 
+  margin-bottom: .5rem; 
+  color: var(--tomato);
+  position: relative;
+  display: inline-block;
+}
+.card-price::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--tomato);
+  transition: width 0.3s;
+}
+.card:hover .card-price::after {
+  width: 100%;
+}
+.promo-badge { 
+  background: var(--cheese); 
+  color: var(--brown); 
+  padding: 2px 8px; 
+  border-radius: 12px; 
+  font-size: .8rem; 
+  margin-left: 8px;
+  animation: pulse 2s infinite;
+}
+.qty-row { 
+  display: flex; 
+  align-items: center; 
+  gap: .5rem; 
+  margin-top: auto; 
+}
+.qty-btn { 
+  width: 30px; 
+  height: 30px; 
+  border-radius: 50%; 
+  border: none; 
+  background: var(--tomato); 
+  color: #fff; 
+  font-weight: bold; 
+  cursor: pointer; 
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.qty-btn:hover { 
+  background: var(--brown); 
+  transform: scale(1.1);
+}
+.qty-val { 
+  min-width: 20px; 
+  text-align: center; 
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+/* ---------- склад ---------- */
+.ingredients {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0.5rem 0;
+  line-height: 1.4;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ingredients.open {
+  max-height: 200px;
+  margin-bottom: 0.5rem;
+}
+.toggle-ingredients {
+  background: none;
+  border: none;
+  color: var(--tomato);
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: var(--transition);
+}
+.toggle-ingredients:hover {
+  color: var(--brown);
+}
+.toggle-ingredients i {
+  font-size: 0.7rem;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.toggle-ingredients.open i {
+  transform: rotate(90deg);
+}
+
+/* ---------- модальні вікна для соків ---------- */
+.juice-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  backdrop-filter: blur(5px);
+}
+.juice-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+.juice-content {
+  background: #fff;
+  color: var(--brown);
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  position: relative;
+  animation: modalSlide 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.juice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.juice-card {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 0.75rem;
+  text-align: center;
+  transition: var(--transition);
+  border: 2px solid transparent;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cardAppear 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.juice-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.juice-card:hover {
+  border-color: var(--cheese);
+  transform: translateY(-5px) scale(1.05);
+}
+.juice-card.selected {
+  border-color: var(--olive);
+  background: #f0f7f0;
+}
+.juice-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  transition: var(--transition);
+}
+.juice-card:hover img {
+  transform: scale(1.1);
+}
+.juice-card h4 {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+.juice-card .volume {
+  font-size: 0.7rem;
+  color: #777;
+  margin-bottom: 0.25rem;
+}
+.juice-card .price {
+  color: var(--tomato);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.juice-card .qty-row {
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+.juice-card .qty-btn {
+  width: 25px;
+  height: 25px;
+  font-size: 0.8rem;
+}
+
+/* ---------- cart ---------- */
+.cart-btn { 
+  position: fixed; 
+  bottom: 1rem; 
+  right: 1rem; 
+  background: var(--tomato); 
+  color: #fff; 
+  width: 60px; 
+  height: 60px; 
+  border-radius: 50%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-size: 1.25rem; 
+  box-shadow: 0 8px 25px rgba(229, 75, 34, 0.3); 
+  z-index: 900; 
+  transition: var(--transition); 
+  cursor: pointer;
+  animation: float 3s ease-in-out infinite;
+}
+.cart-btn:hover { 
+  transform: translateY(-4px) scale(1.1); 
+  box-shadow: 0 12px 30px rgba(229, 75, 34, 0.4);
+  animation: none;
+}
+.cart-btn.added {
+  animation: cartPulse 0.5s ease;
+}
+.cart-badge { 
+  position: absolute; 
+  top: -5px; 
+  right: -5px; 
+  background: var(--cheese); 
+  color: var(--brown); 
+  width: 22px; 
+  height: 22px; 
+  border-radius: 50%; 
+  font-size: .75rem; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-weight: bold;
+  transition: var(--transition);
+}
+.cart-badge.pulse {
+  animation: badgePulse 0.5s ease;
+}
+
+/* ---------- modals ---------- */
+.cart-modal, .promo-modal { 
+  position: fixed; 
+  inset: 0; 
+  background: rgba(0,0,0,.6); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  z-index: 1000; 
+  opacity: 0; 
+  visibility: hidden; 
+  transition: var(--transition);
+  backdrop-filter: blur(5px);
+}
+.cart-modal.open, .promo-modal.open { 
+  opacity: 1; 
+  visibility: visible; 
+}
+.cart-content, .promo-content { 
+  background: #fff; 
+  color: var(--brown); 
+  width: 90%; 
+  max-width: 500px; 
+  max-height: 90vh; 
+  overflow-y: auto; 
+  border-radius: var(--radius); 
+  padding: 1.5rem; 
+  position: relative; 
+  animation: modalSlide 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- cart items ---------- */
+.cart-items-container {
+  margin: 1.5rem 0;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.cart-items-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cart-items-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.cart-items-container::-webkit-scrollbar-thumb {
+  background: var(--tomato);
+  border-radius: 10px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: var(--radius);
+  margin-bottom: 0.75rem;
+  border-left: 4px solid var(--tomato);
+  transition: var(--transition);
+  animation: cartItemAppear 0.3s ease-out;
+}
+
+.cart-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.cart-item-info {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.cart-item-name {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--brown);
+}
+
+.cart-item-volume {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 0.25rem;
+}
+
+.cart-item-price {
+  color: var(--tomato);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cart-item-qty {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 50px;
+  border: 2px solid var(--cheese);
+}
+
+.cart-item-total {
+  min-width: 80px;
+  text-align: right;
+  font-weight: 700;
+  color: var(--olive);
+  font-size: 1.1rem;
+}
+
+.cart-item-remove {
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: var(--transition);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-item-remove:hover {
+  background: rgba(255, 107, 107, 0.1);
+  transform: rotate(90deg);
+}
+
+.empty-cart {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #666;
+}
+
+.empty-cart i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--cheese);
+  opacity: 0.5;
+}
+
+.cart-summary {
+  background: linear-gradient(135deg, #f9f9f9, #fff);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  border: 2px solid var(--cheese);
+}
+
+.cart-summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px dashed #ddd;
+}
+
+.cart-summary-row:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.cart-total-label {
+  font-weight: 600;
+  color: var(--brown);
+}
+
+.cart-total-value {
+  font-weight: 700;
+  color: var(--tomato);
+  font-size: 1.3rem;
+}
+
+/* ---------- animations ---------- */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modalSlide {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes badgePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+}
+
+@keyframes cartPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes tabLine {
+  0%, 100% {
+    width: 100px;
+  }
+  50% {
+    width: 150px;
+  }
+}
+
+@keyframes logoPulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+  }
+}
+
+@keyframes flyToCart {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  70% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(0.1) rotate(180deg);
+  }
+}
+
+@keyframes cartItemAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ---------- footer ---------- */
+footer { 
+  padding: 2rem 1rem; 
+  text-align: center; 
+  background: #fff; 
+  margin-top: 2rem; 
+  font-size: .9rem; 
+  position: relative;
+  overflow: hidden;
+}
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--tomato), var(--cheese), var(--olive));
+  border-radius: 3px;
+  animation: gradientShift 3s infinite alternate;
+}
+footer a { 
+  color: var(--tomato); 
+  transition: var(--transition);
+  position: relative;
+}
+footer a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--tomato);
+  transition: width 0.3s;
+}
+footer a:hover::after {
+  width: 100%;
+}
+.map { 
+  width: 100%; 
+  max-width: 600px; 
+  height: 300px; 
+  border: none; 
+  border-radius: var(--radius); 
+  margin: 1rem 0;
+  animation: fadeUp 0.8s 0.2s both;
+}
+
+/* ---------- rating ---------- */
+.rate-block { 
+  text-align: center; 
+  margin: 2rem 0; 
+}
+.star-rating { 
+  font-size: 1.5rem; 
+  color: var(--cheese); 
+  margin-top: .5rem; 
+  animation: fadeUp 0.5s;
+}
+.star-rating i { 
+  cursor: pointer; 
+  transition: var(--transition); 
+  transform-origin: center;
+}
+.star-rating i.active, .star-rating i:hover { 
+  color: var(--tomato); 
+  transform: scale(1.2);
+}
+
+/* ---------- promo btn ---------- */
+.promo-btn { 
+  position: fixed; 
+  bottom: 5.5rem; 
+  right: 1rem; 
+  background: var(--olive); 
+  color: #fff; 
+  width: 50px; 
+  height: 50px; 
+  border-radius: 50%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-size: 1.1rem; 
+  box-shadow: 0 4px 12px rgba(0,0,0,.2); 
+  z-index: 900; 
+  transition: var(--transition); 
+  cursor: pointer;
+  animation: float 3s ease-in-out infinite 0.5s;
+}
+.promo-btn:hover { 
+  transform: translateY(-4px) scale(1.1); 
+  animation: none;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ---------- адаптив ---------- */
+@media(max-width: 600px) { 
+  .menu-grid { grid-template-columns: 1fr; } 
+  .hero { min-height: 50vh; } 
+  .hero h1 { font-size: 2rem; } 
+  .tabs { overflow-x: auto; justify-content: flex-start; padding-bottom: .5rem; }
+  .cart-btn, .promo-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1rem;
+  }
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .cart-item-info {
+    margin-right: 0;
+    width: 100%;
+  }
+  .cart-item-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* ---------- плаваючі іконки ---------- */
+.floating-icons {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.floating-icons i {
+  position: absolute;
+  bottom: -40px;
+  font-size: 1.5rem;
+  color: var(--cheese);
+  opacity: 0.12;
+  animation: float 20s linear infinite;
+  transition: var(--transition);
+}
+
+.floating-icons i:hover {
+  opacity: 0.2;
+  transform: scale(1.2);
+}
+
+/* ---------- летячий елемент ---------- */
+.flying-item {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--tomato);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  z-index: 10000;
+  pointer-events: none;
+  animation: flyToCart 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  box-shadow: 0 4px 12px rgba(229, 75, 34, 0.3);
+}
+
+.sansgoga{
+  text-align: center;
+}
+
+/* ---------- form styles ---------- */
+.form-field { 
+  width: 100%; 
+  padding: .75rem 1rem; 
+  margin-bottom: .75rem; 
+  border: 2px solid var(--cheese); 
+  border-radius: var(--radius); 
+  font-size: 1rem; 
+  outline: none; 
+  transition: var(--transition);
+  background: #fff;
+}
+.form-field:focus { 
+  border-color: var(--tomato); 
+  box-shadow: 0 0 0 3px rgba(229, 75, 34, 0.1);
+}
+.checkout-btn { 
+  width: 100%; 
+  padding: 1rem; 
+  background: var(--olive); 
+  color: #fff; 
+  border: none; 
+  border-radius: var(--radius); 
+  font-size: 1.1rem; 
+  font-weight: 600; 
+  cursor: pointer; 
+  transition: var(--transition);
+  margin-top: 1rem;
+}
+.checkout-btn:hover { 
+  background: var(--brown); 
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+  </style>
+</head>
+<body>
+  <div class="floating-icons" id="floatIcons"></div>
+
+  <header id="mainHeader">
+    <div class="logo">Kisso</div>
+    <div class="burger" onclick="toggleNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav id="main-nav">
+      <a href="#menu">Меню</a>
+      <a href="#contacts">Контакти</a>
+      <a href="#about">Про нас</a>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="hero">
+      <h1>Справжня італійська піца у Коломиї</h1>
+      <p>Доставка та замовлення столиків: +38 (066) 020-96-75</p>
+      <a href="#menu" class="btn">Переглянути меню</a>
+    </section>
+    
+    <div class="sansgoga">
+      <input type="text" class="search-bar" id="searchInput" placeholder="Пошук страв...">
+    </div>
+    
+    <section id="menu">
+      <div class="tabs">
+        <div class="tab active" data-cat="pizza">Піца</div>
+        <div class="tab" data-cat="main">Основні страви</div>
+        <div class="tab" data-cat="drink">Напої</div>
+        <div class="tab" data-cat="dessert">Десерти</div>
+        <div class="tab" data-cat="banquet">Банкети</div>
+        <div class="tab" data-cat="promo">Акції</div>
+        <div class="tab" data-cat="grill">Гриль</div>
+      </div>
+
+      <div class="menu-grid" id="menuGrid"></div>
+    </section>
+
+    <div class="cart-btn" onclick="toggleCart()">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-badge" id="count">0</span>
+    </div>
+    
+    <section id="about" style="padding:2rem 1rem;text-align:center">
+      <h2>Про нас</h2>
+      <p>Kisso – це смачна піца та італійські страви. Готуємо з любов'ю!</p>
+      
+      <div class="rate-block">
+        <button class="btn" onclick="openRate()">
+          <i class="fas fa-star"></i> Оцінити заклад
+        </button>
+        <div class="star-rating" id="starRating" style="display:none">
+          <i class="fa-regular fa-star" data-s="1"></i>
+          <i class="fa-regular fa-star" data-s="2"></i>
+          <i class="fa-regular fa-star" data-s="3"></i>
+          <i class="fa-regular fa-star" data-s="4"></i>
+          <i class="fa-regular fa-star" data-s="5"></i>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts" style="padding:2rem 1rem;text-align:center">
+      <h2>Контакти</h2>
+      <p><strong>📍 Коломия, вул. Івана Миколайчука, 78200</strong></p>
+      <p><strong>📞 <a href="tel:+380660209675" style="color:#e54b22;font-size:1.25rem">+38 (066) 020-96-75</a></strong></p>
+      <iframe class="map" loading="lazy"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=25.05869328975678%2C48.51547617244124%2C25.061203837394718%2C48.516689673233195&amp;layer=mapnik&amp;marker=48.51608292647055%2C25.059948563575745"
+              allowfullscreen="" aria-label="Ми на мапі"></iframe>
+      <br>
+      <a class="btn" href="https://www.google.com/maps/place/вулиця+Івана+Миколайчука,+Коломия,+Івано-Франківська+область,+78200" target="_blank" rel="noopener">Маршрут</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Kisso • <a href="tel:+380660209675">+38 (066) 020-96-75</a></p>
+    <p>⏰ Пн–Нд: 10:00–22:00</p>
+    <div style="font-size:1.3rem;margin-top:.5rem">
+      <a href="https://instagram.com/kisso_kolomiya" target="_blank" style="color:var(--tomato);margin-right:.5rem"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://t.me/kisso_bot" target="_blank" style="color:var(--tomato)"><i class="fa-brands fa-telegram"></i></a>
+    </div>
+  </footer>
+
+  <!-- Cart Modal -->
+  <div class="cart-modal" id="cartModal" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+    <div class="cart-content">
+      <button onclick="toggleCart()" style="align-self:flex-end;background:none;border:none;font-size:1.5rem;cursor:pointer;position:absolute;top:1rem;right:1rem;z-index:10" aria-label="Закрити">✖</button>
+      <h2 id="cartTitle">Кошик</h2>
+      
+      <div class="cart-items-container" id="cartItems">
+        <!-- Cart items will be inserted here -->
+      </div>
+      
+      <div class="cart-summary" id="cartSummary" style="display:none">
+        <div class="cart-summary-row">
+          <span class="cart-total-label">Сума:</span>
+          <span class="cart-total-value" id="cartTotal">0 грн</span>
+        </div>
+      </div>
+      
+      <form id="orderForm" onsubmit="handleOrder(event)" style="margin-top:1.5rem">
+        <select name="deliveryType" class="form-field" required onchange="toggleFields(this)">
+          <option value="" disabled selected>Оберіть спосіб</option>
+          <option value="delivery">Доставка</option>
+          <option value="cafe">У кафе</option>
+        </select>
+        <input name="name" id="fieldName" class="form-field" placeholder="Ім'я" required>
+        <input name="phone" id="fieldPhone" class="form-field" type="tel" pattern="[0-9+]{10,}" placeholder="+380..." required>
+        <input name="address" id="fieldAddr" class="form-field" placeholder="Адреса доставки">
+        <div id="tableRow" style="display:none">
+          <label>Столик №</label>
+          <select name="table" id="selectTable" class="form-field"></select>
+        </div>
+        <button type="submit" class="checkout-btn">Оформити замовлення</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Juice Modal (для Sandora) -->
+  <div class="juice-modal" id="juiceModal" role="dialog" aria-modal="true" aria-labelledby="juiceTitle">
+    <div class="juice-content">
+      <button onclick="closeJuiceModal()" style="align-self:flex-end;background:none;border:none;font-size:1.5rem;cursor:pointer;position:absolute;top:1rem;right:1rem;z-index:10" aria-label="Закрити">✖</button>
+      <h2 id="juiceTitle">Сіки Sandora</h2>
+      <p>Оберіть сік та об'єм:</p>
+      
+      <div class="volume-tabs" id="modalVolumeTabs">
+        <div class="volume-tab active" data-volume="0.3">0.3 л</div>
+        <div class="volume-tab" data-volume="0.5">0.5 л</div>
+        <div class="volume-tab" data-volume="1">1 л</div>
+      </div>
+      
+      <div class="juice-grid" id="juiceGrid"></div>
+      <button class="btn" onclick="closeJuiceModal()" style="width:100%;margin-top:1rem">Готово</button>
+    </div>
+  </div>
+
+  <!-- Homemade Juice Modal -->
+  <div class="juice-modal" id="homemadeJuiceModal" role="dialog" aria-modal="true" aria-labelledby="homemadeJuiceTitle">
+    <div class="juice-content">
+      <button onclick="closeHomemadeJuiceModal()" style="align-self:flex-end;background:none;border:none;font-size:1.5rem;cursor:pointer;position=absolute;top:1rem;right:1rem;z-index:10" aria-label="Закрити">✖</button>
+      <h2 id="homemadeJuiceTitle">Домашні соки</h2>
+      <p>Свіжовичавлені домашні соки. Оберіть сік та об'єм:</p>
+      
+      <div class="volume-tabs" id="homemadeModalVolumeTabs">
+        <div class="volume-tab active" data-volume="0.3">0.3 л</div>
+        <div class="volume-tab" data-volume="0.5">0.5 л</div>
+        <div class="volume-tab" data-volume="1">1 л</div>
+      </div>
+      
+      <div class="juice-grid" id="homemadeJuiceGrid"></div>
+      <button class="btn" onclick="closeHomemadeJuiceModal()" style="width:100%;margin-top:1rem">Готово</button>
+    </div>
+  </div>
+
+  <script>
+    /* ---------- меню ---------- */
+    const menuData = {
+      pizza: [
+        {name: 'Маргарита', price: 199, img: 'https://www.miyokos.com/cdn/shop/articles/marguerita-pizza.webp?auto=format&fit=crop&w=600&q=60', promo: true, size: '32 см'},
+        {name: 'Пеппероні', price: 219, img: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=60', new: true, size: '32 см'},
+        {name: '4 Сири', price: 249, img: 'https://kitchenatics.com/wp-content/uploads/2020/09/Cheese-pizza-1.jpg?auto=format&fit=crop&w=600&q=60', size: '32 см'},
+        {name: 'Гавайська', price: 229, img: 'https://images.unsplash.com/photo-1604382355076-af4b0eb60143?auto=format&fit=crop&w=600&q=60', size: '32 см'},
+      ],
+
+      main: [
+        {name: 'Паста Карбонара', price: 179, img: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=60', promo: true},
+        {name: 'Лазанья', price: 209, img: 'https://images.unsplash.com/photo-1619895092538-128341789043?auto=format&fit=crop&w=600&q=60'},
+        {name: 'Різотто з грибами', price: 169, img: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=600&q=60', vegan: true}
+      ],
+      
+      drink: [
+        {name: 'Сік Sandora', price: 0, img: 'https://img.postershop.me/21552/3e29dff8-8af0-4952-a2e6-077265e7d812_image.jpeg?auto=format&fit=crop&w=600&q=60', vegan: true, isJuice: true},
+        {name: 'Домашній сік', price: 0, img: 'https://ukrainianwall.com/crops/80271b/620x0/1/0/2023/09/08/4ihlhcOLnDgZwabsUsfu5QIjD8veX76RFS7uPv7M.png?auto=format&fit=crop&w=600&q=80', vegan: true, isHomemadeJuice: true},
+        {name: 'Кола', price: 45, img: 'https://brot.ae/cdn/shop/files/Coa-Cola-Photoroom.jpg?auto=format&fit=crop&w=600&q=60'},
+        {name: 'Пепсі', price: 45, img: 'https://st5.depositphotos.com/61628574/74140/i/450/depositphotos_741401190-stock-photo-pepsi-can-black-background-isolated.jpg?auto=format&fit=crop&w=600&q=60'},
+        {name: 'Лимонад', price: 35, img: 'https://cdn.metro-online.com/-/media/Project/MCW/UA_Metro/Blog/2021/07_2021/Klasychnyy-lymonad/Metro_shop_45945933?auto=format&fit=crop&w=600&q=60', promo: true , vegan: true},
+      ],
+      
+      alcohol: [
+        {name: 'Пиво 0.5', price: 55, img: 'https://images.unsplash.com/photo-1535958636474-b021ee887b13?auto=format&fit=crop&w=600&q=60'},
+        {name: 'Вино 0.7', price: 199, img: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=60'},
+        {name: 'Коктейль', price: 129, img: 'https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=600&q=60'}
+      ],
+      
+      dessert: [
+        {name: 'Тірамісу', price: 99, img: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=600&q=60', promo: true , vegan: true},
+        {name: 'Чізкейк', price: 109, img: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=60', vegan: true},
+        {name: 'Мус', price: 89, img: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=60', vegan: true}
+      ],
+      
+      banquet: [
+        {name: 'Банкет 6 осіб', price: 699, img: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=60'},
+        {name: 'Банкет 10 осіб', price: 999, img: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=60'}
+      ],
+      grill: [
+        {name: 'шашлик', price: 90, img: 'https://images.unsplash.com/photo-1508615263227-c5d58c1e5821?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z3JpbGx8ZW58MHx8MHx8fDA%3Djpg?auto=format&fit=crop&w=600&q=60'},
+        {name: 'риба', price: 120, img: 'https://images.unsplash.com/photo-1556814901-18c866c057da?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&w=600&q=60'}
+      ],
+      
+      promo: []
+    };
+    
+    /* збираємо акції з усіх категорій */
+    Object.values(menuData).forEach(arr => {
+      arr.forEach(item => { if(item.promo) menuData.promo.push(item) });
+    });
+
+    /* ---------- дані про соки Sandora ---------- */
+    const sandoraJuices = [
+      {
+        name: 'Сік Sandora апельсиновий',
+        baseName: 'Сік Sandora',
+        flavor: 'апельсиновий',
+        price: 0,
+        img: 'https://img2.zakaz.ua/52f76d91770b4aabacf9a09e61ba0334/1764677952-s350x350.jpg?auto=format&fit=crop&w=400&q=80',
+        desc: 'Натуральний апельсиновий сік прямого віджиму'
+      },
+      {
+        name: 'Сік Sandora яблучний',
+        baseName: 'Сік Sandora',
+        flavor: 'яблучний',
+        price: 0,
+        img: 'https://img3.zakaz.ua/7728bf5f6f4142b5a4b792b1ac049d5c/1747320593-s350x350.jpg?auto=format&fit=crop&w=400&q=80',
+        desc: 'Освіжаючий яблучний сік з м\'якотью'
+      },
+      {
+        name: 'Сік Sandora вишневий',
+        baseName: 'Сік Sandora',
+        flavor: 'вишневий',
+        price: 0,
+        img: 'https://img2.zakaz.ua/25c8898b7e5f496d8d375ba8c6f7595b/1747320593-s350x350.jpg?auto=format&fit=crop&w=400&q=80',
+        desc: 'Насичений вишневий сік з вітамінами'
+      },
+      {
+        name: 'Сік Sandora томатний',
+        baseName: 'Сік Sandora',
+        flavor: 'томатний',
+        price: 0,
+        img: 'https://img2.zakaz.ua/5b21a01e757d4495b1e00fb685905758/1766661089-s350x350.jpg?auto=format&fit=crop&w=400&q=80',
+        desc: 'Томатний сік з додаванням солі'
+      },
+      {
+        name: 'Сік Sandora мультивітамін',
+        baseName: 'Сік Sandora',
+        flavor: 'мультивітамін',
+        price: 0,
+        img: 'https://img2.zakaz.ua/upload.version_1.0.90df69f981e7425ddec3d84fa1cb4496.350x350.jpeg?auto=format&fit=crop&w=400&q=80',
+        desc: 'Вітамінний мікс з різних фруктів'
+      },
+      {
+        name: 'Сік Sandora грейпфрутовий',
+        baseName: 'Сік Sandora',
+        flavor: 'грейпфрутовий',
+        price: 0,
+        img: 'https://img2.zakaz.ua/90d15f3b20804728b4f7adfa4dfe9f1f/1747320593-s350x350.jpg?auto=format&fit=crop&w=400&q=80',
+        desc: 'Грейпфрутовий сік з легкою гірчинкою'
+      }
+    ];
+
+    /* ---------- дані про домашні соки ---------- */
+    const homemadeJuices = [
+      {
+        name: 'Домашній сік яблучний',
+        baseName: 'Домашній сік',
+        flavor: 'яблучний',
+        price: 0,
+        img: 'https://agrogazda.com.ua/wp-content/uploads/2025/08/yabluchnyj-sik-na-zymu-1536x1025.jpg?auto=format&fit=crop&w=400&q=80',
+        desc: 'Свіжовичавлений яблучний сік'
+      },
+      {
+        name: 'Домашній сік виноградний',
+        baseName: 'Домашній сік',
+        flavor: 'виноградний',
+        price: 0,
+        img: 'https://img.moyo.ua/img/news_desc/1673/167360_1661168103_0.jpg?auto=format&fit=crop&w=400&q=80',
+        desc: 'Освіжаючий виноградний сік'
+      },
+      {
+        name: 'Домашній сік морквяний',
+        baseName: 'Домашній сік',
+        flavor: 'морквяний',
+        price: 0,
+        img: 'https://karalevna.com.ua/wp-content/uploads/2024/02/sok04-1024x681-1.webp?auto=format&fit=crop&w=400&q=80',
+        desc: 'Натуральний морквяний сік з яблуком'
+      },
+      {
+        name: 'Домашній сік апельсиновий',
+        baseName: 'Домашній сік',
+        flavor: 'апельсиновий',
+        price: 0,
+        img: 'https://i.obozrevatel.com/food/recipemain/2019/3/20/ss.jpg?size=1125x750?auto=format&fit=crop&w=400&q=80',
+        desc: 'Свіжий апельсиновий сік з м\'якотью'
+      },
+    ];
+
+    /* ---------- ціни за об'єм ---------- */
+    const juicePrices = {
+      'sandora': {
+        '0.3': 25,
+        '0.5': 35,
+        '1': 40
+      },
+      'homemade': {
+        '0.3': 30,
+        '0.5': 45,
+        '1': 55
+      }
+    };
+
+    /* ---------- склад страв ---------- */
+    const ingredientsData = {
+      'Маргарита': 'Томатний соус, моцарела, базилік, оливкова олія, томати черрі',
+      'Пеппероні': 'Томатний соус, моцарела, пепероні, орегано, пармезан',
+      '4 Сири': 'Соус альфредо, моцарела, горгонзола, пармезан, фета, орегано',
+      'Гавайська': 'Томатний соус, моцарела, курка, ананас, кукурудза, цибуля',
+      'Паста Карбонара': 'Спагетті, бекон, вершки, яйце, пармезан, часник, перець',
+      'Лазанья': 'Листи лазаньї, фарш телячий, соус бешамель, моцарела, томати, цибуля',
+      'Різотто з грибами': 'Рис арборіо, шампіньйони, цибуля, вершки, пармезан, біле вино, петрушка',
+      'Тірамісу': 'Печиво савоярді, маскарпоне, кава, какао, яйце, цукор',
+      'Чізкейк': 'Сир вершковий, печиво, вершки, желатин, лимон, ваніль',
+      'Мус': 'Шоколад, вершки, яйце, цукор, масло, какао',
+      'шашлик': 'Свинина маринована, цибуля, перець, приправа для шашлику',
+      'риба': 'Форель, лимон, оливкова олія, часник, розмарин, сіль',
+      'Банкет 6 осіб': 'Піца Маргарита 2шт, Пеппероні 2шт, Паста Карбонара 1кг, салат Цезар, напої на вибір',
+      'Банкет 10 осіб': 'Піца 4 Сири 3шт, Гавайська 2шт, Лазанья 2кг, шашлик 1кг, десерт, напої'
+    };
+
+    let cart = [], currentCat = 'pizza', searchStr = '';
+    const MAX_TABLES = 15;
+
+    /* ---------- FUNCTIONS ---------- */
+    function getQty(name) {
+      // Для соків Sandora - рахуємо ВСІ варіації (з різними об'ємами)
+      if (name === 'Сік Sandora') {
+        let total = 0;
+        cart.forEach(item => {
+          if (item.name.startsWith('Сік Sandora')) {
+            total += item.qty;
+          }
+        });
+        return total;
+      }
+      
+      // Для домашніх соків - рахуємо ВСІ варіації (з різними об'ємами)
+      if (name === 'Домашній сік') {
+        let total = 0;
+        cart.forEach(item => {
+          if (item.name.startsWith('Домашній сік')) {
+            total += item.qty;
+          }
+        });
+        return total;
+      }
+      
+      // Для інших товарів - стандартна логіка
+      const item = cart.find(i => i.name === name);
+      return item ? item.qty : 0;
+    }
+
+    function createFlyingItem(startX, startY, isNewItem) {
+      const cartBtn = document.querySelector('.cart-btn');
+      const cartRect = cartBtn.getBoundingClientRect();
+      const endX = cartRect.left + cartRect.width / 2;
+      const endY = cartRect.top + cartRect.height / 2;
+      
+      const flyingItem = document.createElement('div');
+      flyingItem.className = 'flying-item';
+      flyingItem.innerHTML = isNewItem ? '🍕' : '+';
+      flyingItem.style.left = startX + 'px';
+      flyingItem.style.top = startY + 'px';
+      flyingItem.style.setProperty('--tx', (endX - startX) + 'px');
+      flyingItem.style.setProperty('--ty', (endY - startY) + 'px');
+      
+      document.body.appendChild(flyingItem);
+      
+      setTimeout(() => {
+        if (flyingItem.parentNode) {
+          document.body.removeChild(flyingItem);
+        }
+      }, 800);
+    }
+
+    function render() {
+      const g = document.getElementById('menuGrid');
+      g.innerHTML = '';
+      
+      let list = menuData[currentCat] || [];
+      
+      if(searchStr) {
+        list = list.filter(it => it.name.toLowerCase().includes(searchStr));
+      }
+      
+      if(list.length === 0) {
+        g.innerHTML = '<p style="text-align:center;grid-column:1/-1;padding:2rem">Нічого не знайдено</p>';
+        return;
+      }
+      
+      list.forEach((it, i) => {
+        const qty = getQty(it.name);
+        const c = document.createElement('article'); 
+        c.className = 'card'; 
+        
+        const isSandoraJuice = it.name === 'Сік Sandora';
+        const isHomemadeJuice = it.name === 'Домашній сік';
+        
+        let ingredientsHTML = '';
+        if (ingredientsData[it.name]) {
+          ingredientsHTML = `
+            <button class="toggle-ingredients" onclick="toggleIngredients('${it.name}')">
+              <i class="fa-solid fa-chevron-down"></i> Склад
+            </button>
+            <div class="ingredients">${ingredientsData[it.name]}</div>
+          `;
+        }
+        
+        const sizeBadge = it.size ? `<span class="size-badge">${it.size}</span>` : '';
+        
+        c.innerHTML =
+          '<img src="' + it.img + '" alt="' + it.name + '" loading="lazy">' +
+          '<div class="card-body">' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem">' +
+              '<h3 class="card-title">' + it.name + '</h3>' +
+              sizeBadge +
+            '</div>' +
+            (it.new ? '<span style="background:#ff6b6b;color:#fff;padding:2px 8px;border-radius:12px;font-size:.8rem;animation:pulse 2s infinite">Новинка</span>' : '') +
+            '<p class="card-price">' + 
+              (isSandoraJuice || isHomemadeJuice ? `від ${juicePrices[isSandoraJuice ? 'sandora' : 'homemade']['0.3']} грн` : it.price + ' грн') + 
+              (it.promo ? '<span style="color:#ffd700">★ акція</span> ' : '') + 
+              (it.vegan ? '<span style="color:#6a994e">🌱 веган</span>' : '') + 
+            '</p>' +
+            ingredientsHTML +
+            '<div class="qty-row">' +
+              '<button class="qty-btn" onclick="' + 
+                (isSandoraJuice ? 'openJuiceModal()' : isHomemadeJuice ? 'openHomemadeJuiceModal()' : `changeQty('${it.name}',${it.price},-1, event, ${!(isSandoraJuice || isHomemadeJuice)})`) + 
+              '">-</button>' +
+              '<span class="qty-val">' + qty + '</span>' +
+              '<button class="qty-btn" onclick="' + 
+                (isSandoraJuice ? 'openJuiceModal()' : isHomemadeJuice ? 'openHomemadeJuiceModal()' : `changeQty('${it.name}',${it.price},1, event, ${!(isSandoraJuice || isHomemadeJuice)})`) + 
+              '">+</button>' +
+            '</div>' +
+          '</div>';
+        g.appendChild(c);
+        
+        setTimeout(() => {
+          c.classList.add('visible');
+        }, i * 50);
+      });
+    }
+    
+    function changeQty(name, price, delta, event, showAnimation = true) {
+      const item = cart.find(i => i.name === name);
+      const isNewItem = !item && delta > 0;
+      
+      if(!item) {
+        if(delta > 0) {
+          cart.push({name, price, qty: delta});
+          
+          if (showAnimation && event) {
+            const rect = event.target.getBoundingClientRect();
+            const startX = rect.left + rect.width / 2;
+            const startY = rect.top + rect.height / 2;
+            createFlyingItem(startX, startY, true);
+          }
+        }
+      } else {
+        const oldQty = item.qty;
+        item.qty = Math.max(0, item.qty + delta);
+        if(item.qty === 0) {
+          cart = cart.filter(i => i.name !== name);
+        } else if (delta > 0 && showAnimation && event) {
+          const rect = event.target.getBoundingClientRect();
+          const startX = rect.left + rect.width / 2;
+          const startY = rect.top + rect.height / 2;
+          createFlyingItem(startX, startY, false);
+        }
+      }
+      
+      localStorage.setItem('kisso-cart', JSON.stringify(cart));
+      const totalCount = cart.reduce((s, i) => s + i.qty, 0);
+      const countBadge = document.getElementById('count');
+      countBadge.textContent = totalCount;
+      
+      countBadge.classList.add('pulse');
+      setTimeout(() => countBadge.classList.remove('pulse'), 500);
+      
+      updateCardQuantity(name, getQty(name));
+      
+      if(document.getElementById('cartModal').classList.contains('open')) {
+        updateCart();
+      }
+    }
+    
+    function updateCardQuantity(name, qty) {
+      document.querySelectorAll('.card').forEach(card => {
+        const title = card.querySelector('.card-title');
+        if (title && title.textContent === name) {
+          const qtyVal = card.querySelector('.qty-val');
+          if (qtyVal) {
+            qtyVal.textContent = qty;
+            qtyVal.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+              qtyVal.style.transform = '';
+            }, 200);
+          }
+        }
+      });
+    }
+    
+    function toggleNav() {
+      const nav = document.getElementById('main-nav');
+      const burger = document.querySelector('.burger');
+      nav.classList.toggle('open');
+      burger.classList.toggle('open');
+      
+      if (nav.classList.contains('open')) {
+        document.querySelectorAll('#main-nav a').forEach((a, i) => {
+          a.style.transitionDelay = (i * 0.1) + 's';
+        });
+      }
+    }
+    
+    function toggleCart() {
+      const modal = document.getElementById('cartModal');
+      modal.classList.toggle('open');
+      if(modal.classList.contains('open')) {
+        updateCart();
+        autoSelectTableFromUrl();
+      }
+    }
+    
+    function updateCart() {
+      const list = document.getElementById('cartItems');
+      const summary = document.getElementById('cartSummary');
+      list.innerHTML = '';
+      
+      if(!cart.length) {
+        list.innerHTML = `
+          <div class="empty-cart">
+            <i class="fas fa-shopping-basket"></i>
+            <p>Ваш кошик порожній</p>
+            <p style="font-size:0.9rem;margin-top:0.5rem">Додайте щось смачненьке!</p>
+          </div>
+        `;
+        summary.style.display = 'none';
+        return;
+      }
+      
+      summary.style.display = 'block';
+      
+      let total = 0;
+      
+      cart.forEach((it, index) => {
+        const itemTotal = it.price * it.qty;
+        total += itemTotal;
+        
+        const div = document.createElement('div'); 
+        div.className = 'cart-item';
+        div.style.animationDelay = (index * 50) + 'ms';
+        
+        const volumeInfo = it.volume ? `<div class="cart-item-volume">${it.volume}</div>` : '';
+        
+        div.innerHTML = `
+          <div class="cart-item-info">
+            <div class="cart-item-name">${it.name}</div>
+            ${volumeInfo}
+            <div class="cart-item-price">${it.price} грн/шт</div>
+          </div>
+          <div class="cart-item-controls">
+            <div class="cart-item-qty">
+              <button class="qty-btn" onclick="removeFromCartByName('${it.name}${it.volume ? '|' + it.volume : ''}',${it.price},-1)" style="width:25px;height:25px;font-size:0.8rem">-</button>
+              <span style="min-width:20px;text-align:center;font-weight:600">${it.qty}</span>
+              <button class="qty-btn" onclick="addToCartByName('${it.name}${it.volume ? '|' + it.volume : ''}',${it.price},1)" style="width:25px;height:25px;font-size:0.8rem">+</button>
+            </div>
+            <div class="cart-item-total">${itemTotal} грн</div>
+            <button class="cart-item-remove" onclick="removeFromCartByName('${it.name}${it.volume ? '|' + it.volume : ''}',${it.price},0)" title="Видалити">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        `;
+        list.appendChild(div);
+      });
+      
+      document.getElementById('cartTotal').textContent = total + ' грн';
+    }
+    
+    function removeFromCartByName(fullName, price, delta) {
+      const [name, volume] = fullName.split('|');
+      const itemIndex = cart.findIndex(i => i.name === name && (!volume || i.volume === volume));
+      
+      if (itemIndex !== -1) {
+        if (delta === 0) {
+          cart.splice(itemIndex, 1);
+        } else {
+          cart[itemIndex].qty = Math.max(0, cart[itemIndex].qty + delta);
+          if (cart[itemIndex].qty === 0) {
+            cart.splice(itemIndex, 1);
+          }
+        }
+      }
+      
+      localStorage.setItem('kisso-cart', JSON.stringify(cart));
+      document.getElementById('count').textContent = cart.reduce((s, i) => s + i.qty, 0);
+      updateCart();
+      
+      // Оновлюємо кількість на картках меню для соків
+      if (name.startsWith('Сік Sandora')) {
+        document.querySelectorAll('.card').forEach(card => {
+          const title = card.querySelector('.card-title');
+          if (title && title.textContent === 'Сік Sandora') {
+            const qtyVal = card.querySelector('.qty-val');
+            if (qtyVal) {
+              qtyVal.textContent = getQty('Сік Sandora');
+            }
+          }
+        });
+      }
+      
+      if (name.startsWith('Домашній сік')) {
+        document.querySelectorAll('.card').forEach(card => {
+          const title = card.querySelector('.card-title');
+          if (title && title.textContent === 'Домашній сік') {
+            const qtyVal = card.querySelector('.qty-val');
+            if (qtyVal) {
+              qtyVal.textContent = getQty('Домашній сік');
+            }
+          }
+        });
+      }
+    }
+    
+    function addToCartByName(fullName, price, delta) {
+      const [name, volume] = fullName.split('|');
+      const item = cart.find(i => i.name === name && (!volume || i.volume === volume));
+      
+      if (!item) {
+        cart.push({name, price, qty: delta, volume: volume || null});
+      } else {
+        item.qty += delta;
+      }
+      
+      localStorage.setItem('kisso-cart', JSON.stringify(cart));
+      document.getElementById('count').textContent = cart.reduce((s, i) => s + i.qty, 0);
+      updateCart();
+      
+      // Оновлюємо кількість на картках меню для соків
+      if (name.startsWith('Сік Sandora')) {
+        document.querySelectorAll('.card').forEach(card => {
+          const title = card.querySelector('.card-title');
+          if (title && title.textContent === 'Сік Sandora') {
+            const qtyVal = card.querySelector('.qty-val');
+            if (qtyVal) {
+              qtyVal.textContent = getQty('Сік Sandora');
+            }
+          }
+        });
+      }
+      
+      if (name.startsWith('Домашній сік')) {
+        document.querySelectorAll('.card').forEach(card => {
+          const title = card.querySelector('.card-title');
+          if (title && title.textContent === 'Домашній сік') {
+            const qtyVal = card.querySelector('.qty-val');
+            if (qtyVal) {
+              qtyVal.textContent = getQty('Домашній сік');
+            }
+          }
+        });
+      }
+    }
+    
+    function removeFromCart(name) {
+      cart = cart.filter(item => item.name !== name);
+      localStorage.setItem('kisso-cart', JSON.stringify(cart));
+      
+      const totalCount = cart.reduce((s, i) => s + i.qty, 0);
+      document.getElementById('count').textContent = totalCount;
+      
+      updateCart();
+      updateCardQuantity(name, 0);
+    }
+    
+    function toggleFields(sel) {
+      const isCafe = sel.value === 'cafe';
+      const addrField = document.getElementById('fieldAddr');
+      const tableRow = document.getElementById('tableRow');
+      
+      if(isCafe) {
+        addrField.style.display = 'none';
+        addrField.required = false;
+        tableRow.style.display = 'block';
+        document.getElementById('selectTable').required = true;
+
+        const s = document.getElementById('selectTable');
+        if(!s.children.length) {
+          for(let i = 1; i <= MAX_TABLES; i++) {
+            const o = document.createElement('option');
+            o.value = i;
+            o.textContent = i;
+            s.appendChild(o);
+          }
+        }
+      } else {
+        addrField.style.display = 'block';
+        addrField.required = true;
+        tableRow.style.display = 'none';
+        document.getElementById('selectTable').required = false;
+      }
+      
+      const urlParams = new URLSearchParams(window.location.search);
+      const tableFromUrl = urlParams.get('table');
+      
+      if (tableFromUrl && !isCafe) {
+        sel.value = 'cafe';
+        toggleFields(sel);
+        
+        const tableSelect = document.getElementById('selectTable');
+        tableSelect.value = tableFromUrl;
+        
+        const message = document.createElement('div');
+        message.style.cssText = 'background: #f9c74f; padding: 10px; border-radius: 8px; margin: 10px 0; text-align: center; font-weight: bold;';
+        message.textContent = `Автоматично вибрано столик №${tableFromUrl}`;
+        const cartItems = document.getElementById('cartItems');
+        if (cartItems.nextSibling) {
+          document.querySelector('.cart-content').insertBefore(message, cartItems.nextSibling);
+        } else {
+          document.querySelector('.cart-content').appendChild(message);
+        }
+      }
+    }
+
+    function autoSelectTableFromUrl() {
+      const tableNumber = getUrlParam('table');
+      if (tableNumber && parseInt(tableNumber) >= 1 && parseInt(tableNumber) <= MAX_TABLES) {
+        const deliverySelect = document.querySelector('select[name="deliveryType"]');
+        deliverySelect.value = 'cafe';
+        toggleFields(deliverySelect);
+        const tableSelect = document.getElementById('selectTable');
+        tableSelect.value = tableNumber;
+        deliverySelect.disabled = true;
+        
+        const message = document.createElement('div');
+        message.style.cssText = 'background: #f9c74f; padding: 10px; border-radius: 8px; margin: 10px 0; text-align: center; font-weight: bold;';
+        message.textContent = `Автоматично вибрано столик №${tableNumber}`;
+        const cartItems = document.getElementById('cartItems');
+        if (cartItems && cartItems.nextSibling) {
+          document.querySelector('.cart-content').insertBefore(message, cartItems.nextSibling);
+        } else if (cartItems) {
+          cartItems.parentNode.insertBefore(message, cartItems.nextSibling);
+        }
+      }
+    }
+
+    function getUrlParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+    
+    async function sendToTelegram(orderNo, total, formData) {
+      const token = '8383546914:AAFJzg019Mm76G7pU_ffXpsvqiQO2TW8c4s';
+      const chat_id = '2026196111';
+      
+      let text = '🍕 Нове замовлення №' + orderNo + '\n';
+      text += '💰 ' + total + ' грн\n';
+      text += '👤 ' + formData.get('name') + ' | ' + formData.get('phone') + '\n';
+      
+      const deliveryType = formData.get('deliveryType');
+      const tableNumber = formData.get('table');
+      
+      if (deliveryType === 'cafe' && tableNumber) {
+        text += '🍽️ У кафе, стіл №' + tableNumber;
+      } else {
+        text += '🚗 Доставка: ' + (formData.get('address') || 'не вказано');
+      }
+      
+      text += '\n\nЗамовлення:\n';
+      cart.forEach(item => {
+        const volumeInfo = item.volume ? ` (${item.volume})` : '';
+        text += '• ' + item.name + volumeInfo + ' x' + item.qty + ' - ' + (item.price * item.qty) + ' грн\n';
+      });
+      
+      try {
+        const response = await fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({chat_id, text})
+        });
+        
+        if(!response.ok) {
+          throw new Error('Помилка відправки в Telegram');
+        }
+        
+        return true;
+      } catch (error) {
+        console.error('Помилка:', error);
+        return false;
+      }
+    }
+    
+    async function handleOrder(e) {
+      e.preventDefault();
+      if(!cart.length) {
+        alert('Кошик порожній');
+        return;
+      }
+      
+      const formData = new FormData(e.target);
+      const orderNo = Math.random().toString(36).substr(2, 6).toUpperCase();
+      const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      
+      const urlParams = new URLSearchParams(window.location.search);
+      const tableFromUrl = urlParams.get('table');
+      
+      if (tableFromUrl) {
+        formData.set('deliveryType', 'cafe');
+        formData.set('table', tableFromUrl);
+      }
+      
+      if(formData.get('deliveryType') === 'delivery' && !formData.get('address')) {
+        alert('Будь ласка, вкажіть адресу доставки');
+        return;
+      }
+      
+      if(formData.get('deliveryType') === 'cafe' && !formData.get('table')) {
+        alert('Будь ласка, оберіть столик');
+        return;
+      }
+      
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Відправка...';
+      submitBtn.disabled = true;
+      
+      submitBtn.classList.add('loading');
+      
+      try {
+        const telegramSent = await sendToTelegram(orderNo, total, formData);
+        
+        if (telegramSent) {
+          submitBtn.textContent = '✅ Успішно!';
+          submitBtn.style.background = 'var(--olive)';
+          
+          setTimeout(() => {
+            alert('✅ Замовлення №' + orderNo + ' прийнято!\n📞 +38 (066) 020-96-75 зателефонуємо найближчим часом.');
+            cart = [];
+            localStorage.removeItem('kisso-cart');
+            document.getElementById('count').textContent = 0;
+            document.getElementById('orderForm').reset();
+            updateCart();
+            toggleCart();
+            
+            submitBtn.textContent = originalText;
+            submitBtn.style.background = '';
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('loading');
+          }, 1000);
+        } else {
+          alert('❌ Не вдалося відправити замовлення. Спробуйте ще раз або зателефонуйте нам.');
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('loading');
+        }
+      } catch (error) {
+        console.error('Помилка:', error);
+        alert('❌ Сталася помилка при відправці замовлення. Будь ласка, спробуйте ще раз або зателефонуйте нам.');
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('loading');
+      }
+    }
+
+    /* ---------- функції для соків Sandora ---------- */
+    function openJuiceModal() {
+      const modal = document.getElementById('juiceModal');
+      modal.classList.add('open');
+      
+      renderJuiceModal('sandora');
+    }
+
+    function closeJuiceModal() {
+      document.getElementById('juiceModal').classList.remove('open');
+    }
+
+    function renderJuiceModal(type = 'sandora') {
+      const isSandora = type === 'sandora';
+      const modalId = isSandora ? 'juiceModal' : 'homemadeJuiceModal';
+      const gridId = isSandora ? 'juiceGrid' : 'homemadeJuiceGrid';
+      const volumeTabsId = isSandora ? 'modalVolumeTabs' : 'homemadeModalVolumeTabs';
+      
+      const grid = document.getElementById(gridId);
+      grid.innerHTML = '';
+      
+      const juices = isSandora ? sandoraJuices : homemadeJuices;
+      const currentVolume = document.querySelector(`#${volumeTabsId} .volume-tab.active`).dataset.volume;
+      
+      juices.forEach((juice, i) => {
+        const price = juicePrices[isSandora ? 'sandora' : 'homemade'][currentVolume];
+        const fullName = juice.name;
+        const volumeStr = `${currentVolume} л`;
+        
+        const cartItem = cart.find(item => item.name === fullName && item.volume === volumeStr);
+        const currentQty = cartItem ? cartItem.qty : 0;
+        
+        const card = document.createElement('div');
+        card.className = 'juice-card';
+        card.style.animationDelay = (i * 100) + 'ms';
+        card.innerHTML = `
+          <img src="${juice.img}" alt="${juice.name}" loading="lazy">
+          <h4>${juice.name}</h4>
+          <p class="volume">${currentVolume} л</p>
+          <div class="qty-row" style="justify-content:center;margin-top:0.5rem">
+            <button class="qty-btn" onclick="changeJuiceQty('${type}', ${i}, '${currentVolume}', -1, event)" style="width:25px;height:25px;font-size:0.8rem">-</button>
+            <span class="qty-val" style="margin:0 0.5rem;font-weight:bold">${currentQty}</span>
+            <button class="qty-btn" onclick="changeJuiceQty('${type}', ${i}, '${currentVolume}', 1, event)" style="width:25px;height:25px;font-size:0.8rem">+</button>
+          </div>
+          <p class="price">${price} грн</p>
+        `;
+        
+        grid.appendChild(card);
+        
+        setTimeout(() => {
+          card.classList.add('visible');
+        }, 50 + i * 100);
+      });
+    }
+
+    function changeJuiceQty(type, index, volume, delta, event) {
+      const isSandora = type === 'sandora';
+      const juices = isSandora ? sandoraJuices : homemadeJuices;
+      const juice = juices[index];
+      const price = juicePrices[isSandora ? 'sandora' : 'homemade'][volume];
+      const fullName = juice.name;
+      const volumeStr = `${volume} л`;
+      
+      const cartItem = cart.find(item => item.name === fullName && item.volume === volumeStr);
+      
+      if (!cartItem) {
+        if (delta > 0) {
+          cart.push({
+            name: fullName,
+            price: price,
+            qty: delta,
+            volume: volumeStr,
+            flavor: juice.flavor,
+            baseName: juice.baseName
+          });
+        }
+      } else {
+        cartItem.qty = Math.max(0, cartItem.qty + delta);
+        if (cartItem.qty === 0) {
+          const itemIndex = cart.findIndex(i => i.name === fullName && i.volume === volumeStr);
+          cart.splice(itemIndex, 1);
+        }
+      }
+      
+      localStorage.setItem('kisso-cart', JSON.stringify(cart));
+      const totalCount = cart.reduce((s, i) => s + i.qty, 0);
+      document.getElementById('count').textContent = totalCount;
+      
+      // Оновлюємо кількість в модальному вікні
+      const modalId = isSandora ? 'juiceModal' : 'homemadeJuiceModal';
+      const gridId = isSandora ? 'juiceGrid' : 'homemadeJuiceGrid';
+      const cards = document.querySelectorAll(`#${gridId} .juice-card`);
+      
+      if (cards[index]) {
+        const qtySpan = cards[index].querySelector('.qty-val');
+        const newQty = cart.find(item => item.name === fullName && item.volume === volumeStr)?.qty || 0;
+        qtySpan.textContent = newQty;
+        
+        qtySpan.style.transform = 'scale(1.3)';
+        setTimeout(() => {
+          qtySpan.style.transform = '';
+        }, 200);
+      }
+      
+      // Оновлюємо загальну кількість на картці меню
+      const baseName = isSandora ? 'Сік Sandora' : 'Домашній сік';
+      document.querySelectorAll('.card').forEach(card => {
+        const title = card.querySelector('.card-title');
+        if (title && title.textContent === baseName) {
+          const qtyVal = card.querySelector('.qty-val');
+          if (qtyVal) {
+            // Використовуємо getQty для правильного підрахунку ВСІХ варіацій
+            qtyVal.textContent = getQty(baseName);
+            qtyVal.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+              qtyVal.style.transform = '';
+            }, 200);
+          }
+        }
+      });
+      
+      const countBadge = document.getElementById('count');
+      countBadge.classList.add('pulse');
+      setTimeout(() => countBadge.classList.remove('pulse'), 500);
+    }
+
+    function openHomemadeJuiceModal() {
+      const modal = document.getElementById('homemadeJuiceModal');
+      modal.classList.add('open');
+      
+      renderJuiceModal('homemade');
+    }
+
+    function closeHomemadeJuiceModal() {
+      document.getElementById('homemadeJuiceModal').classList.remove('open');
+    }
+
+    function toggleIngredients(name) {
+      const btn = event.currentTarget;
+      const ingredients = btn.nextElementSibling;
+      
+      btn.classList.toggle('open');
+      ingredients.classList.toggle('open');
+      
+      const icon = btn.querySelector('i');
+      if (btn.classList.contains('open')) {
+        icon.className = 'fa-solid fa-chevron-right';
+      } else {
+        icon.className = 'fa-solid fa-chevron-down';
+      }
+    }
+
+    const icons = ['fa-pizza-slice', 'fa-burger', 'fa-glass-cheers', 'fa-cookie-bite', 'fa-coffee', 'fa-ice-cream', 'fa-cheese', 'fa-bread-slice'];
+    const fi = document.getElementById('floatIcons');
+    
+    for(let i = 0; i < 30; i++) {
+      const el = document.createElement('i');
+      el.className = 'fa-solid ' + icons[i % icons.length];
+      el.style.left = Math.random() * 100 + '%';
+      el.style.animationDelay = (Math.random() * 20) + 's';
+      el.style.animationDuration = (18 + Math.random() * 12) + 's';
+      el.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+      fi.appendChild(el);
+    }
+
+    function openRate() {
+      const rating = document.getElementById('starRating');
+      rating.style.display = 'block';
+      
+      setTimeout(() => {
+        rating.style.opacity = '1';
+        rating.style.transform = 'translateY(0)';
+      }, 10);
+    }
+    
+    document.querySelectorAll('#starRating i').forEach(star => {
+      star.addEventListener('click', () => {
+        const s = +star.dataset.s;
+        document.querySelectorAll('#starRating i').forEach((x, i) => {
+          x.className = i < s ? 'fa-solid fa-star active' : 'fa-regular fa-star';
+          if (i < s) {
+            x.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+              x.style.transform = '';
+            }, 300);
+          }
+        });
+        
+        setTimeout(() => {
+          const alertDiv = document.createElement('div');
+          alertDiv.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--olive);
+            color: white;
+            padding: 15px 20px;
+            border-radius: var(--radius);
+            z-index: 10000;
+            animation: fadeUp 0.5s, fadeOut 0.5s 2.5s forwards;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+          `;
+          alertDiv.textContent = 'Дякуємо за вашу оцінку!';
+          document.body.appendChild(alertDiv);
+          
+          setTimeout(() => {
+            document.body.removeChild(alertDiv);
+          }, 3000);
+        }, 150);
+      });
+    });
+
+    let lastScroll = 0;
+    function handleScroll() {
+      const header = document.getElementById('mainHeader');
+      const currentScroll = window.scrollY;
+      
+      if (currentScroll > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        header.classList.add('hidden');
+      } else {
+        header.classList.remove('hidden');
+      }
+      
+      lastScroll = currentScroll;
+      
+      document.querySelectorAll('.card').forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.8) {
+          card.classList.add('visible');
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.getElementById('searchInput');
+      searchInput.addEventListener('input', e => {
+        searchStr = e.target.value.toLowerCase();
+        render();
+        
+        if (searchStr) {
+          searchInput.style.boxShadow = '0 0 0 3px rgba(229, 75, 34, 0.2)';
+        } else {
+          searchInput.style.boxShadow = '';
+        }
+      });
+      
+      document.querySelectorAll('.tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelector('.tab.active').classList.remove('active');
+          btn.classList.add('active');
+          currentCat = btn.dataset.cat;
+          
+          btn.style.transform = 'scale(0.95)';
+          setTimeout(() => {
+            btn.style.transform = '';
+          }, 200);
+          
+          render();
+        });
+      });
+      
+      function setupVolumeTabs(containerId, isModal = false) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        
+        container.addEventListener('click', (e) => {
+          if (e.target.classList.contains('volume-tab')) {
+            container.querySelectorAll('.volume-tab').forEach(tab => {
+              tab.classList.remove('active');
+            });
+            e.target.classList.add('active');
+            
+            if (!isModal) {
+              currentVolume = e.target.dataset.volume;
+            } else {
+              const type = containerId.includes('homemade') ? 'homemade' : 'sandora';
+              renderJuiceModal(type);
+            }
+          }
+        });
+      }
+      
+      setupVolumeTabs('modalVolumeTabs', true);
+      setupVolumeTabs('homemadeModalVolumeTabs', true);
+      
+      document.querySelectorAll('#main-nav a').forEach(a => {
+        a.addEventListener('click', toggleNav);
+      });
+      
+      const saved = JSON.parse(localStorage.getItem('kisso-cart') || '[]');
+      cart = saved;
+      document.getElementById('count').textContent = cart.reduce((s, i) => s + i.qty, 0);
+      
+      render();
+      
+      window.addEventListener('scroll', handleScroll);
+      
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+      
+      setTimeout(() => {
+        document.querySelectorAll('.card').forEach(card => {
+          observer.observe(card);
+        });
+      }, 500);
+      
+      document.querySelectorAll('.cart-modal, .juice-modal').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            if (modal.id === 'cartModal') toggleCart();
+            if (modal.id === 'juiceModal') closeJuiceModal();
+            if (modal.id === 'homemadeJuiceModal') closeHomemadeJuiceModal();
+          }
+        });
+      });
+      
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes fadeOut {
+          from { opacity: 1; transform: translateY(0); }
+          to { opacity: 0; transform: translateY(-20px); }
+        }
+        .loading {
+          position: relative;
+          overflow: hidden;
+        }
+        .loading::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+          animation: loading 1.5s infinite;
+        }
+        @keyframes loading {
+          0% { left: -100%; }
+          100% { left: 100%; }
+        }
+      `;
+      document.head.appendChild(style);
+    });
+  </script>
+</body>
+</html>
